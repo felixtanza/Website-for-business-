@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Felix Tanza Otieno - Web Developer & WhatsApp Bot Expert</title>
+    <link rel="stylesheet" href="css.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        #background-music {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 999;
+            opacity: 0.5;
+        }
+        #background-music:hover {
+            opacity: 1;
+        }
+        #current-datetime {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            animation: textColorMove 3s infinite alternate, textColorChange 4s infinite alternate;
+            position: relative; /* Needed for relative movement */
+        }
+
+        @keyframes textColorMove {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(10px); /* Adjust the movement distance */
+            }
+        }
+
+        @keyframes textColorChange {
+            0% {
+                color: #fff; /* Initial color */
+            }
+            25% {
+                color: #f8f9fa;
+            }
+            50% {
+                color: #ddd;
+            }
+            75% {
+                color: #f8f9fa;
+            }
+            100% {
+                color: #fff; /* Back to initial */
+            }
+        }
+
+        .whatsapp-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #25D366; /* WhatsApp green */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        .whatsapp-button:hover {
+            background-color: #128C7E; /* Darker WhatsApp green */
+        }
+
+        /* Pop-up Styles */
+        #welcome-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            animation: slideIn 0.5s ease-out forwards, colorChange 3s infinite alternate;
+        }
+
+        #welcome-popup h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        #welcome-popup p {
+            color: #555;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translate(-50%, -60%);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
+        }
+
+        @keyframes colorChange {
+            0% {
+                border: 2px solid #007bff; /* Initial border color */
+            }
+            100% {
+                border: 2px solid #28a745; /* Final border color */
+            }
+        }
+
+        /* Facebook Button Style */
+        .facebook-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1877F2; /* Facebook blue */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px; /* Add some spacing */
+        }
+
+        .facebook-button:hover {
+            background-color: #0d6efd; /* Darker Facebook blue */
+        }
+
+        /* Floating Button Styles with Heartbeat, Color Change, and Movement */
+        .floating-button {
+            position: fixed;
+            z-index: 998; /* Below the welcome pop-up if it exists */
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            animation: floatingButtonPulse 1.5s infinite alternate, floatingButtonColor 2s infinite alternate, floatingButtonMove 4s infinite alternate;
+        }
+
+        .floating-button:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes floatingButtonPulse {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes floatingButtonColor {
+            0% {
+                background-color: #007bff; /* Initial color */
+            }
+            100% {
+                background-color: #dc3545; /* Secondary color */
+            }
+        }
+
+        @keyframes floatingButtonMove {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(15px); /* Adjust the movement distance */
+            }
+        }
+
+        /* Style for the "Home" button */
+        .floating-home {
+            top: 20px;
+            left: 20px;
+        }
+
+        /* Style for the "Services" button */
+        .floating-services {
+            top: 80px; /* Adjust position as needed */
+            left: 20px; /* Align with Home button */
+        }
+
+        /* Style for the "Contact" button */
+        .floating-contact {
+            top: 140px; /* Adjust position as needed */
+            left: 20px; /* Align with other floating buttons */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Dr. Felix Tanza Otieno</div>
+            <ul>
+                <li><a href="#home" class="floating-button floating-home">Home</a></li>
+                <li><a href="#services" class="floating-button floating-services">Services</a></li>
+                <li><a href="#contact" class="floating-button floating-contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Dr. Felix Tanza Otieno</h1>
+                <p>Experienced Web Developer and WhatsApp Bot Deployment Specialist.</p>
+                <a href="#services" class="button">View Services</a>
+                <a href="#contact" class="button primary">Contact Me</a>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <h2>Services</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <h3>Web Development</h3>
+                    <p>Building modern, responsive, and user-friendly websites.</p>
+                </div>
+                <div class="service-item">
+                    <h3>WhatsApp Bot Deployment</h3>
+                    <p>Developing and deploying automated WhatsApp communication solutions.</p>
+                </div>
+                <div class="service-item">
+                    <h3>API Integration</h3>
+                    <p>Connecting various services and platforms through API integration.</p>
+                </div>
+                </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Contact Me</h2>
+            <p>Feel free to reach out for inquiries or collaborations via the following platforms:</p>
+            <p><a href="https://wa.me/254705195336?text=Hello%20Dr.%20Felix,%20I%20am%20contacting%20you%20from%20your%20website.%20My%20name%20is%20..." class="whatsapp-button" target="_blank">Contact me on WhatsApp</a></p>
+            <p><a href="https://www.facebook.com/profile.php?id=61560049556797" class="facebook-button" target="_blank">Connect on Facebook</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Dr. Felix Tanza Otieno. All rights reserved.</p>
+        <p id="current-datetime">Saturday, April 19, 2025 at 11:20 PM EAT</p>
+    </footer>
+
+    <div id="welcome-popup">
+        <h2>Karibu!</h2>
+        <p>Welcome to the online portfolio of Dr. Felix Tanza Otieno.</p>
+    </div>
+
+    <audio id="background-music" autoplay loop controls muted>
+        <source src="your-background-music.mp3" type="audio/mpeg">
+        <source src="your-background-music.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const welcomePopup = document.getElementById('welcome-popup');
+            welcomePopup.style.visibility = 'visible';
+            welcomePopup.style.opacity = '1';
+
+            setTimeout(function() {
+                welcomePopup.style.opacity = '0';
+                welcomePopup.style.visibility = 'hidden';
+            }, 5000); // Hide after 5 seconds (adjust as needed)
+        });
+
+        function updateDateTime() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+            const formattedDateTime = now.toLocaleDateString('en-KE', options);
+            document.getElementById('current-datetime').textContent = formattedDateTime;
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+
+</body>
+</html>
