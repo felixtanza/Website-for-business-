@@ -1,0 +1,12 @@
+{
+  "name": "dr-otieno-website",
+  "version": "1.0.0",
+  "description": "Dr. Felix Tanza Otieno's Portfolio Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve ."
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
+}
